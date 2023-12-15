@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Reynoso14.Views.StudentView">
+    <ContentPage.Content>
+        <StackLayout Padding="50">
+
+            <Label Text="Fecha de Matricula"></Label>
+            <DatePicker Date="{Binding FechaMatricula}" />
+            
+            <Label Text="NombreEstudiante"></Label>
+            <Entry FontSize="Title" Placeholder="Nombre del Estudiante"
+                   Text="{Binding NombreEstudiante}"></Entry>
+
+            <Label Text="NombreCurso"></Label>
+            <Entry FontSize="Title" Placeholder="Nombre del Curso"
+                   Text="{Binding NombreCurso}"></Entry>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Hombre"
+                       VerticalOptions="CenterAndExpand" 
+                       FontSize="Title" />
+                <CheckBox
+                       IsChecked="{Binding Sexo}"/>
+
+                <Label Text="Mujer"
+                       VerticalOptions="CenterAndExpand" 
+                       FontSize="Title" />
+                <CheckBox
+                       IsChecked="{Binding Sexo}"/>
+            </StackLayout>
+
+            <Button Text="RegisterComand" Command="{Binding RegisterComand}"></Button>
+            <Button Text="SearchCommand" Command="{Binding SearchCommand}"></Button>
+
+            <ListView
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                ItemsSource="{Binding Student}"
+                HasUnevenRows="True"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding FechaMatricula}" />
+                                <Label Text="{Binding NombreEstudiante}" />
+                                <Label Text="{Binding NombreCurso}" />
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Switch IsToggled="{Binding Sexo}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
